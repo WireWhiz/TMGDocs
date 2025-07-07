@@ -15,15 +15,17 @@ const config: Config = {
     },
 
     // Set the production url of your site here
-    url: 'https://your-docusaurus-site.example.com',
+    url: 'https://wirewhiz.github.io',
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
-    baseUrl: '/',
+    baseUrl: '/TMGDocs/',
+    trailingSlash: false,
 
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
-    organizationName: 'TMG', // Usually your GitHub org/user name.
-    projectName: 'TMGDocs', // Usually your repo name.
+    // These need to be my info for now, but we could move this to our own github org later
+    organizationName: 'WireWhiz', // Usually your GitHub org/user name.
+    projectName: 'wirewhiz.github.io', // Usually your repo name.
 
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
