@@ -1,0 +1,8 @@
+{
+    "label": "Trigger Seeker",
+    "position": 2,
+    "link": {
+        "type": "generated-index",
+        "description": "Tools for VRChat code-gen"
+    }
+}
