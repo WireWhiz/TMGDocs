@@ -5,5 +5,5 @@ sidebar_position: 1
 
 Thrillseeker media group provides two packages at the moment:
 
-* [Trigger Seeker](./trigger-seeker/) 
-* [Smooth Interfaces](./smooth-interfaces/)
+* [Trigger Seeker](trigger-seeker/index.md) 
+* [Smooth Interfaces](smooth-interfaces/index.md)
