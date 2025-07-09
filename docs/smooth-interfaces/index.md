@@ -12,13 +12,9 @@ And, even though the focus of this toolkit is VR, we provide a no-effort desktop
 
 Interaction Examples:
 * Dial
-    - A midi controller style dial
 * Wheel
-    - Car wheel like interaction
 * Lever
-    - Lever
 * Slider
-    - Handle that's constrained to one axis.
 
 Required in scene:
 * Interaction Station

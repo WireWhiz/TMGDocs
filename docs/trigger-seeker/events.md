@@ -14,17 +14,17 @@ The UI looks a little messy at first, but if you're familiar with traditional Un
 
 This is used to collect the list of functions/events for #2
 
-### #2 Fuction/Event
+### #2 Function/Event
 
 What function or event to call.
 
-#### We support:
+#### We support running:
 1. Most native Unity functions exposed to Udon
-2. Custom UdonEvents
-3. UdonSharp Methods (Including parameters)
+2. custom Udon events
+3. public UdonSharp functions (Including parameters)
 
 :::tip
-If you've used any form of Udon scripting, you're probbably going to notice quickly that `UdonBehaviour.SendCustomEvent()` does *NOT* show up when selecting a function.
+If you've used any form of Udon scripting, you're probably going to notice quickly that `UdonBehaviour.SendCustomEvent()` does *NOT* show up when selecting a function.
 
 This is because custom events show up as functions in that same dropdown, right at the top. They're grabbed directly from the compiled output of any program executed by an UdonBehaviour, so we support events from ALL program sources, including 3rd party ones like CyanTrigger. However, arguments are only supported for UdonSharpProgramAssets.
 
@@ -35,7 +35,7 @@ Tired of typing in an exact event name every time? You'll never need too in a tr
 
 When a function or event accepts input, you can choose either to use a custom value, or an event argument.
 
-In this example, `OnValueChanged(Single)` has one argument representing a new value for a wheel gismo's rotation, so we may want to pass that to a function instead of an unchanging custom variable. In this case, I set the `rotation` variable of an UdonGraph to that changed value, before calling the `ReportWheelRotation` custom event.
+In this example, `OnValueChanged(Single)` has one argument representing a new value for a wheel gizmo's rotation, so we may want to pass that to a function instead of an unchanging custom variable. In this case, I set the `rotation` variable of an UdonGraph to that changed value, before calling the `ReportWheelRotation` custom event.
 
 :::tip
 `Single` is CSharp's internal name for `float`
@@ -69,9 +69,17 @@ The secret to the way our events work, is a small custom Udon compiler. (Yes, an
 
 The asset reference (field #5 in the diagram) is the UdonProgramAsset used to generate the event's code. 
 
-Any TriggerSeekerEvent property on a script is secretly an entire hidden udon behaviour on the same game object, set to use that program asset.
+Any TriggerSeekerEvent property on a script is secretly an entire hidden Udon behaviour on the same game object, set to use that program asset.
 
 The delete button (field #6) deletes that hidden UdonBehaviour, disabling the event.
+
+:::danger
+Event assets should only be shared when duplicating objects or prefabs. While the UI does let you enable an event using an existing event asset, THIS WILL RESULT IN DATA LOSS as this is currently not well supported.
+
+Best practice is to set up events on an object from a fresh start every time, if you duplicate an object, all events on all copies of that object will share the same asset, and will function. However it is STRONGLY 
+suggested that you do not edit anything other than custom function parameter values on shared assets, if any extra editing is required, either manually copy the event asset and edit the fresh copy, or use the delete 
+button to reset the event and recreate it from scratch. 
+:::
 
 ## Using TriggerSeekerEvents in custom scripts
 
@@ -103,7 +111,7 @@ And that's it! Any functions you add in the inspector will now be called by the 
 
 Now what if you want to pass a value with your event? It's as easy as adding a list of types to the TriggerSeekerEvent attribute.
 
-Lets say we were creating a chat app, and we wanted an event for every time we recieve a message. We could define an event for that like this:
+Let's say we were creating a chat app, and we wanted an event for every time we receive a message. We could define an event for that like this:
 
 ```cs
 // Arg 1: message sender 
